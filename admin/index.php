@@ -25,7 +25,7 @@ require dirname(__FILE__) . '/admin_header.php';
 
 $moduleAdmin = Admin::getInstance();
 $moduleAdmin->displayNavigation('index.php');
-$moduleAdmin->addConfigModuleVersion('system', 212);
+$moduleAdmin->addConfigModuleVersion('system', '2.1.6-Stable');
 $moduleAdmin->addConfigWarning('These are just examples!');
 $moduleAdmin->addConfigBoxLine('notarealmodule', 'module');
 $moduleAdmin->addConfigBoxLine(array('notarealmodule', 'warning'), 'module');

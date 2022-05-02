@@ -1,5 +1,12 @@
 <?php
 
+use Xmf\Request;
+use XoopsModules\Common\{
+    Breadcrumb,
+    FormB3Slider,
+    ThemedForm
+};
+
 $currentFile = basename(__FILE__);
 include __DIR__ . '/header.php';
 
@@ -12,8 +19,8 @@ $xoTheme->addStylesheet(COMMON_CSS_URL . '/module.css');
 $xoTheme->addScript(COMMON_JS_URL . '/module.js');
 //$xoTheme->addScript(COMMON_JS_URL . '/' . $currentFile . '.js'); // ie: index.php.js
 // template: common\breadcrumb
-xoops_load('breadcrumb', 'common');
-$breadcrumb = new common\breadcrumb();
+//xoops_load('breadcrumb', 'common');
+$breadcrumb = new Breadcrumb();
 $breadcrumb->addLink($commonHelper->getModule()->getVar('name'), COMMON_URL);
 $xoopsTpl->assign('commonBreadcrumb', $breadcrumb->render());
 
@@ -24,8 +31,8 @@ xoops_load('XoopsUserUtility');
 
 
 
-xoops_load('XoopsRequest');
-$op = XoopsRequest::getCmd('op', '');
+//xoops_load('XoopsRequest');
+$op = Request::getCmd('op', '');
 switch ($op) {
     default:
         break;
@@ -39,21 +46,21 @@ switch ($op) {
 
 // template: form
 xoops_load('XoopsFormLoader');
-xoops_load('ThemedForm', 'common');
-$formObj = new common\ThemedForm('', 'iscrittoForm', '', 'POST', true);
+//xoops_load('ThemedForm', 'common');
+$formObj = new ThemedForm('', 'iscrittoForm', '', 'POST', true);
 $formObj->setExtra('enctype="multipart/form-data"');
 
 
 
-xoops_load('FormB3Slider', 'common');
+//xoops_load('FormB3Slider', 'common');
 $values = 200;
 $options = [
     'ticks' => [0, 100, 200, 300, 400],
     'ticks_labels' => ['V0', 'V100', 'V200', 'V300', 'V400'],
     'ticks_snap_bounds' => 30,
 ];
-$FormB3Slider = new common\FormB3Slider('FormB3Slider1', 'FormB3Slider1', $values, $options);
-$FormB3Slider->setDescription("<a hef='https://github.com/seiyria/bootstrap-slider'>https://github.com/seiyria/bootstrap-slider</a><br>new common\FormB3Slider('FormB3Slider1', 'FormB3Slider1', \$values, \$options);");
+$FormB3Slider = new FormB3Slider('FormB3Slider1', 'FormB3Slider1', $values, $options);
+$FormB3Slider->setDescription("<a hef='https://github.com/seiyria/bootstrap-slider'>https://github.com/seiyria/bootstrap-slider</a><br>new FormB3Slider('FormB3Slider1', 'FormB3Slider1', \$values, \$options);");
 $formObj->addElement($FormB3Slider);
 
 
@@ -62,8 +69,8 @@ $values = 200;
 $options = [
     'min' => 0, 'max' => 400, 'step' => 10,
 ];
-$FormB3Slider = new common\FormB3Slider('FormB3Slider2', 'FormB3Slider2', $values, $options);
-$FormB3Slider->setDescription("new common\FormB3Slider('FormB3Slider2', 'FormB3Slider2', \$values, \$options);");
+$FormB3Slider = new FormB3Slider('FormB3Slider2', 'FormB3Slider2', $values, $options);
+$FormB3Slider->setDescription("new FormB3Slider('FormB3Slider2', 'FormB3Slider2', \$values, \$options);");
 $formObj->addElement($FormB3Slider);
 
 
@@ -72,8 +79,8 @@ $values = [100, 300];
 $options = [
     'min' => 0, 'max' => 400, 'step' => 50,
 ];
-$FormB3Slider = new common\FormB3Slider('FormB3Slider3', 'FormB3Slider3', $values, $options);
-$FormB3Slider->setDescription("new common\FormB3Slider('FormB3Slider3', 'FormB3Slider3', \$values, \$options);");
+$FormB3Slider = new FormB3Slider('FormB3Slider3', 'FormB3Slider3', $values, $options);
+$FormB3Slider->setDescription("new FormB3Slider('FormB3Slider3', 'FormB3Slider3', \$values, \$options);");
 $formObj->addElement($FormB3Slider);
 
 

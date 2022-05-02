@@ -14,7 +14,7 @@ use Xmf\{
 //defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 include_once \dirname(__DIR__) . '/include/common.php';
 
-class Testcategory extends \CommonObject {
+class Testcategory extends CommonObject {
 
     /**
      * @var moduleHelper
@@ -23,9 +23,7 @@ class Testcategory extends \CommonObject {
 
     /** @var \XoopsMySQLDatabase */
     public $db;
-
     /**
-     * @param null|int $id
      */
 //TODO verificare il senso di $id
 //    public function __construct($id = null) {
@@ -58,7 +56,7 @@ class Testcategory extends \CommonObject {
     /**
      * This method get form values ready for database insert
      *
-     * @return  array
+     * @return  bool
      */
     public function setValues($default = array(), $hash = 'default') {
         parent::setValues($default, $hash);
@@ -66,7 +64,7 @@ class Testcategory extends \CommonObject {
         $category_id = Request::getInt('category_id', 0, $hash);
         $this->setVar('category_id', $category_id);
         // name
-        $this->setVar('name', trim(\XoopsRequest::getString('nome', '', $hash)));
+        $this->setVar('name', trim(\Request::getString('nome', '', $hash)));
         //
         return true;
     }

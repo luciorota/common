@@ -13,5 +13,6 @@
         "phpoffice/phpspreadsheet": "dev-master"
     },
     "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }

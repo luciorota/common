@@ -1,3 +1,3 @@
 <?php
 // class/formdatapicker.php
-define("_FORMDATAPICKER_ERROR", "Errore");
+define('_FORMDATAPICKER_ERROR', 'Error');

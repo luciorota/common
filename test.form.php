@@ -1,5 +1,19 @@
 <?php
 
+use Xmf\Request;
+use XoopsModules\Common\{
+    Breadcrumb,
+    FormCap,
+    FormCodiceFiscale,
+    FormEmail,
+    FormTelephonenumber,
+    FormXoopsImage,
+    FormNumber,
+    FormDatepicker,
+    FormSelectGroup,
+    ThemedForm
+};
+
 $currentFile = basename(__FILE__);
 include __DIR__ . '/header.php';
 
@@ -12,8 +26,8 @@ $xoTheme->addStylesheet(COMMON_CSS_URL . '/module.css');
 $xoTheme->addScript(COMMON_JS_URL . '/module.js');
 //$xoTheme->addScript(COMMON_JS_URL . '/' . $currentFile . '.js'); // ie: index.php.js
 // template: common\breadcrumb
-xoops_load('breadcrumb', 'common');
-$breadcrumb = new common\breadcrumb();
+//xoops_load('breadcrumb', 'common');
+$breadcrumb = new Breadcrumb();
 $breadcrumb->addLink($commonHelper->getModule()->getVar('name'), COMMON_URL);
 $xoopsTpl->assign('commonBreadcrumb', $breadcrumb->render());
 
@@ -24,8 +38,8 @@ xoops_load('XoopsUserUtility');
 
 
 
-xoops_load('XoopsRequest');
-$op = XoopsRequest::getCmd('op', '');
+//xoops_load('XoopsRequest');
+$op = Request::getCmd('op', '');
 switch ($op) {
     default:
         break;
@@ -39,8 +53,8 @@ switch ($op) {
 
 // template: form
 xoops_load('XoopsFormLoader');
-xoops_load('ThemedForm', 'common');
-$formObj = new common\ThemedForm('title', 'iscrittoForm', '', 'POST', true);
+//xoops_load('ThemedForm', 'common');
+$formObj = new ThemedForm('title', 'iscrittoForm', '', 'POST', true);
 $formObj->setExtra('enctype="multipart/form-data"');
 
 //xoops_load('FormGoogleMap', 'common');
@@ -52,40 +66,40 @@ $formObj->insertBreak();
 
 
 
-xoops_load('FormXoopsImage', 'common');
-$FormXoopsImage = new common\FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 255, 255, '', null);
-$FormXoopsImage->setDescription("new common\FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 255, 255, '', null)");
+//xoops_load('FormXoopsImage', 'common');
+$FormXoopsImage = new FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 255, 255, '', null);
+$FormXoopsImage->setDescription("new FormXoopsImage('FormXoopsImage', 'FormXoopsImage', 255, 255, '', null)");
 $formObj->addElement($FormXoopsImage);
 
-xoops_load('FormCodiceFiscale', 'common');
-$FormCodiceFiscale = new common\FormCodiceFiscale('FormCodiceFiscale', 'FormCodiceFiscale');
-$FormCodiceFiscale->setDescription("new common\FormCodiceFiscale('FormCodiceFiscale', 'FormCodiceFiscale')");
+//xoops_load('FormCodiceFiscale', 'common');
+$FormCodiceFiscale = new FormCodiceFiscale('FormCodiceFiscale', 'FormCodiceFiscale');
+$FormCodiceFiscale->setDescription("new FormCodiceFiscale('FormCodiceFiscale', 'FormCodiceFiscale')");
 $formObj->addElement($FormCodiceFiscale);
 
-xoops_load('FormCap', 'common');
-$FormCap = new common\FormCap('FormCap', 'FormCap');
-$FormCap->setDescription("new common\FormCap('FormCap', 'FormCap')");
+//xoops_load('FormCap', 'common');
+$FormCap = new FormCap('FormCap', 'FormCap');
+$FormCap->setDescription("new FormCap('FormCap', 'FormCap')");
 $formObj->addElement($FormCap);
 
-xoops_load('FormTelephonenumber', 'common');
-$FormTelephonenumber = new common\FormTelephonenumber('FormTelephonenumber', 'FormTelephonenumber', 10, 10, '');
-$FormTelephonenumber->setDescription("new common\FormTelephonenumber('FormTelephonenumber', 'FormTelephonenumber', 10, 10, '')");
+//xoops_load('FormTelephonenumber', 'common');
+$FormTelephonenumber = new FormTelephonenumber('FormTelephonenumber', 'FormTelephonenumber', 10, 10, '');
+$FormTelephonenumber->setDescription("new FormTelephonenumber('FormTelephonenumber', 'FormTelephonenumber', 10, 10, '')");
 $formObj->addElement($FormTelephonenumber);
 
-xoops_load('FormEmail', 'common');
-$FormEmail = new common\FormEmail('FormEmail', 'FormEmail');
-$FormEmail->setDescription("new common\FormEmail('FormEmail', 'FormEmail')");
+//xoops_load('FormEmail', 'common');
+$FormEmail = new FormEmail('FormEmail', 'FormEmail');
+$FormEmail->setDescription("new FormEmail('FormEmail', 'FormEmail')");
 $formObj->addElement($FormEmail);
 
-xoops_load('FormNumber', 'common');
-$FormNumber = new common\FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1);
-$FormNumber->setDescription("new common\FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1)");
+//xoops_load('FormNumber', 'common');
+$FormNumber = new FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1);
+$FormNumber->setDescription("new FormNumber('FormNumber', 'FormNumber', 0, 255, 0, 1)");
 $formObj->addElement($FormNumber);
 
 
 
-xoops_load('FormDatepicker', 'common');
-$FormDatepicker = new common\FormDatepicker('FormDatepicker', 'FormDatepicker');
+//xoops_load('FormDatepicker', 'common');
+$FormDatepicker = new FormDatepicker('FormDatepicker', 'FormDatepicker');
 $FormDatepicker->setDescription('Click to open a datepicker pop-up');
 $formObj->addElement($FormDatepicker);
 
@@ -96,11 +110,11 @@ $formObj->insertBreak();
 
 
 $formObj->addElement(new \XoopsFormSelectGroup('XoopsFormSelectGroup', 'XoopsFormSelectGroup', false, null, 5, true));
-xoops_load('FormSelectGroup', 'common');
-$FormSelectGroup = new common\FormSelectGroup('FormSelectGroup<br>multiple true', 'FormSelectGroup-multiple', false, null, 10, true);
-$FormSelectGroup->setDescription("new common\FormSelectGroup('FormSelectGroup<br>multiple true', 'FormSelectGroup-multiple', false, null, 10, true)");
+//xoops_load('FormSelectGroup', 'common');
+$FormSelectGroup = new FormSelectGroup('FormSelectGroup<br>multiple true', 'FormSelectGroup-multiple', false, null, 10, true);
+$FormSelectGroup->setDescription("new FormSelectGroup('FormSelectGroup<br>multiple true', 'FormSelectGroup-multiple', false, null, 10, true)");
 $formObj->addElement($FormSelectGroup);
-$formObj->addElement(new common\FormSelectGroup('FormSelectGroup<br>multiple false', 'FormSelectGroup', false, null, 10, false));
+$formObj->addElement(new FormSelectGroup('FormSelectGroup<br>multiple false', 'FormSelectGroup', false, null, 10, false));
 
 
 

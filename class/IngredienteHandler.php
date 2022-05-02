@@ -13,9 +13,9 @@ use Xmf\{
 //defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 include_once dirname(__DIR__) . '/include/common.php';
 
-xoops_load('Object', 'common');
+//xoops_load('Object', 'common');
 
-class IngredienteHandler extends \CommonObjectHandler {
+class IngredienteHandler extends CommonObjectHandler {
 
     private const TABLE = 'mod_passds_ingrediente';
     private const ENTITY = Ingrediente::class;

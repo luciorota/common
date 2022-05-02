@@ -8,21 +8,22 @@ need to be done.
 
 ## Automated tool
 
-The tool is included in PhpSpreadsheet. It scans recursively all files
-and directories, starting from the current directory. Assuming it was
-installed with composer, it can be run like so:
+[RectorPHP](https://github.com/rectorphp/rector) can be used to migrate
+automatically your codebase. Assuming your files to be migrated lives
+in `src/`, you can run the migration like so:
 
-``` sh
-cd /project/to/migrate/src
-/project/to/migrate/vendor/phpoffice/phpspreadsheet/bin/migrate-from-phpexcel
+```sh
+composer require rector/rector --dev
+vendor/bin/rector process src --set phpexcel-to-phpspreadsheet
+composer remove rector/rector
 ```
 
-**Important** The tool will irreversibly modify your sources, be sure to
-backup everything, and double check the result before committing.
+For more details, see
+[RectorPHP blog post](https://getrector.org/blog/2020/04/16/how-to-migrate-from-phpexcel-to-phpspreadsheet-with-rector-in-30-minutes).
 
 ## Manual changes
 
-In addition to automated changes, a few things need to be migrated manually.
+RectorPHP should take care of everything, but if somehow it does not work, you can review/apply the following manual changes
 
 ### Renamed readers and writers
 
@@ -57,12 +58,10 @@ IOFactory now relies on classes autoloading.
 Before:
 
 ```php
+// Before
 \PHPExcel_IOFactory::addSearchLocation($type, $location, $classname);
-```
 
-After:
-
-```php
+// After
 \PhpOffice\PhpSpreadsheet\IOFactory::registerReader($type, $classname);
 ```
 

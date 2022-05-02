@@ -23,7 +23,7 @@
  */
 
 if (count($argv) < 2) {
-	throw new \InvalidArgumentException("Expected: php -f convert.php [input file]");
+	throw new \InvalidArgumentException('Expected: php -f convert.php [input file]');
 }
 
 if (!file_exists($argv[1])) {
@@ -32,7 +32,7 @@ if (!file_exists($argv[1])) {
 
 $input = file_get_contents($argv[1]);
 
-require_once(__DIR__ . "/src/Html2Text.php");
-require_once(__DIR__ . "/src/Html2TextException.php");
+require_once(__DIR__ . '/src/Html2Text.php');
+require_once(__DIR__ . '/src/Html2TextException.php');
 
 echo Html2Text\Html2Text::convert($input);

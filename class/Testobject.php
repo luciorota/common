@@ -14,12 +14,12 @@ use Xmf\{
 //defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 include_once \dirname(__DIR__) . '/include/common.php';
 
-xoops_load('Object', 'common');
+//xoops_load('Object', 'common');
 
 /**
  * Class Testobject
  */
-class Testobject extends \CommonObject {
+class Testobject extends CommonObject {
 
     /**
      * @var moduleHelper
@@ -60,7 +60,7 @@ class Testobject extends \CommonObject {
     /**
      * This method get form values ready for database insert
      *
-     * @return  array
+     * @return  bool
      */
     public function setValues($default = [], $hash = 'default') {
         parent::setValues($default, $hash);
@@ -71,7 +71,7 @@ class Testobject extends \CommonObject {
     }
 
     /**
-     * @return Form
+     * @return \XoopsModules\Common\ThemedForm
      */
     public function getForm($action = false) {
         if ($action === false) {
@@ -79,15 +79,15 @@ class Testobject extends \CommonObject {
         }
 
         \xoops_load('XoopsFormLoader');
-        \xoops_load('ThemedForm', 'common');
-        $formObj = new \common\ThemedForm($this->isNew() ? _ADD : _EDIT, "testobjectForm", $action, 'POST', true);
+//        \xoops_load('ThemedForm', 'common');
+        $formObj = new ThemedForm($this->isNew() ? _ADD : _EDIT, 'testobjectForm', $action, 'POST', true);
         $formObj->setExtra('enctype="multipart/form-data"');
         $formObj->setClass('form-horizontal');
         // name
         $formObj->addElement(new \XoopsFormText('name', 'name', 10, 255, $this->getVar('name')), true);
         // weight
-        \xoops_load('FormNumber', 'common');
-        $formObj->addElement(new \common\FormNumber('weight', 'weight', $this->getVar('weight'), 255, 0, 1));
+//        \xoops_load('FormNumber', 'common');
+        $formObj->addElement(new FormNumber('weight', 'weight', $this->getVar('weight'), 255, 0, 1));
         // captcha
         if ($this->moduleHelper->isUserAdmin()) {
             // NOP

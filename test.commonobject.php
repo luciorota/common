@@ -1,5 +1,10 @@
 <?php
 
+use Xmf\Request;
+use XoopsModules\Common\{
+    Breadcrumb
+};
+
 $currentBasename = basename(__FILE__);
 $currentFilename = basename(__FILE__, '.php');
 include __DIR__ . '/header.php';
@@ -10,43 +15,43 @@ $xoopsOption['template_main'] = "{$commonHelper->getModule()->dirname()}_test.co
 include XOOPS_ROOT_PATH . '/header.php';
 
 // template: common\breadcrumb
-xoops_load('breadcrumb', 'common');
-$breadcrumb = new common\breadcrumb();
+//xoops_load('breadcrumb', 'common');
+$breadcrumb = new Breadcrumb();
 $breadcrumb->addLink($commonHelper->getModule()->getVar('name'), COMMON_URL);
 $GLOBALS['xoopsTpl']->assign('commonBreadcrumb', $breadcrumb->render());
 
-xoops_load('XoopsRequest');
-$op = XoopsRequest::getCmd('op', '');
+//xoops_load('XoopsRequest');
+$op = Request::getCmd('op', '');
 switch ($op) {
     default:
     case 'edit':
-        $id = XoopsRequest::getInt('id', 0);
+        $id = Request::getInt('id', 0);
         $testObj = $TestObjectHandler->get($id);
         $GLOBALS['xoopsTpl']->assign('form', ($testObj->getForm())->render());
         break;
 
     case 'save':
-        $id = XoopsRequest::getInt('id', 0);
+        $id = Request::getInt('id', 0);
         $testObj = $TestObjectHandler->get($id);
         $testObj->setValues([], 'POST');
         $TestObjectHandler->insert($testObj);
-        redirect_header("{$currentBasename}", 3, 'saved');
+        redirect_header((string)($currentBasename), 3, 'saved');
         break;
 
     case 'delete':
-        $id = XoopsRequest::getInt('id', 0);
+        $id = Request::getInt('id', 0);
         $testObj = $TestObjectHandler->get($id);
-        if (XoopsRequest::getBool('ok', false, 'POST') == true) {
+        if (Request::getBool('ok', false, 'POST') == true) {
             if (!$GLOBALS['xoopsSecurity']->check()) {
-                redirect_header("{$currentBasename}", 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
+                redirect_header((string)($currentBasename), 3, implode(',', $GLOBALS['xoopsSecurity']->getErrors()));
             }
             $TestObjectHandler->delete($testObj);
-            redirect_header("{$currentBasename}", 3, 'deleted');
+            redirect_header((string)($currentBasename), 3, 'deleted');
         } else {
             ob_start();
             xoops_confirm(
                 ['ok' => true, 'op' => $op, 'id' => $id], 
-                XoopsRequest::getText('REQUEST_URI', '', 'SERVER'), 
+                Request::getText('REQUEST_URI', '', 'SERVER'),
                 _DELETE . '?', 
                 _DELETE
             );

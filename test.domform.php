@@ -1,7 +1,7 @@
 <?php
 
 class br extends DOMElement {
-    function __construct() {
+    public function __construct() {
         parent::__construct('br');
     }
 }

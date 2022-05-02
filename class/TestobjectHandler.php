@@ -14,9 +14,9 @@ use Xmf\{
 //defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 include_once \dirname(__DIR__) . '/include/common.php';
 
-xoops_load('Object', 'common');
+//xoops_load('Object', 'common');
 
-class TestobjectHandler extends \CommonObjectHandler {
+class TestobjectHandler extends CommonObjectHandler {
 
     private const TABLE = 'mod_common_test';
     private const ENTITY = Testobject::class;

@@ -22,10 +22,10 @@
 $currentFile = basename(__FILE__);
 include_once __DIR__ . '/admin_header.php';
 
-$op = XoopsRequest::getCmd('op', 'tools');
+$op = Request::getCmd('op', 'tools');
 switch ($op) {
     default:
-    case "tools":
+    case 'tools':
         //  admin navigation
         xoops_cp_header();
         $indexAdmin = \Xmf\Module\Admin::getInstance();

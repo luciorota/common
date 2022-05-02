@@ -24,21 +24,21 @@
 // Translator: luciorota
 
 // menu
-define('_MI_COMMON_MENU_INDEX',"Pagina iniziale");
+define('_MI_COMMON_MENU_INDEX', 'First page');
 
 
 
 // admin menu
-define('_MI_COMMON_ADMENU_INDEX',"Home");
-define('_MI_COMMON_ADMENU_TOOLS',"Tools");
-define('_MI_COMMON_ADMENU_PERMISSIONS',"Permissions");
-define('_MI_COMMON_ADMENU_ABOUT',"About");
+define('_MI_COMMON_ADMENU_INDEX', 'Home');
+define('_MI_COMMON_ADMENU_TOOLS', 'Tools');
+define('_MI_COMMON_ADMENU_PERMISSIONS', 'Permissions');
+define('_MI_COMMON_ADMENU_ABOUT', 'About');
 
 
 
 // Module config setting
-define("_MI_COMMON_EDITOR","[Editor] Choose an editor for textarea fields");
-define("_MI_COMMON_EDITOR_DESC","<ul><li><b>dhtmltextarea:</b> standard Xoops editor</li><li><b>textarea:</b> standard html editor</li><li><b>tinymce:</b> WYSIWYG editor</li><li>...</li></ul>");
+define('_MI_COMMON_EDITOR', '[Editor] Choose an editor for textarea fields');
+define('_MI_COMMON_EDITOR_DESC', '<ul><li><b>dhtmltextarea:</b> standard Xoops editor</li><li><b>textarea:</b> standard html editor</li><li><b>tinymce:</b> WYSIWYG editor</li><li>...</li></ul>');
 
-define('_MI_COMMON_GOOGLEMAPSAPIKEY',"Google Maps API Key");
-define('_MI_COMMON_GOOGLEMAPSAPIKEY_DESC',"...");
+define('_MI_COMMON_GOOGLEMAPSAPIKEY', 'Google Maps API Key');
+define('_MI_COMMON_GOOGLEMAPSAPIKEY_DESC', '...');

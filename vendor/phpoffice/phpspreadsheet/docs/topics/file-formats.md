@@ -71,7 +71,7 @@ library.
 ### Csv
 
 Comma Separated Value (CSV) file format is a common structuring strategy
-for text format files. In CSV flies, each line in the file represents a
+for text format files. In CSV files, each line in the file represents a
 row of data and (within each line of the file) the different data fields
 (or columns) are separated from one another using a comma (`,`). If a
 data field contains a comma, then it should be enclosed (typically in
@@ -80,7 +80,8 @@ semi-colon (`;`) are used as separators instead of a comma, although
 other symbols can be used. Because CSV is a text-only format, it doesn't
 support any data formatting options.
 
-"CSV" is not a single, well-defined format (although see RFC 4180 for
+"CSV" is not a single, well-defined format (although see 
+[RFC 4180](https://www.rfc-editor.org/rfc/rfc4180.html) for
 one definition that is commonly used). Rather, in practice the term
 "CSV" refers to any file that:
 
@@ -117,5 +118,5 @@ Wide Web Consortium (W3C). However, in 2000, HTML also became an
 international standard (ISO/IEC 15445:2000). HTML 4.01 was published in
 late 1999, with further errata published through 2001. In 2004
 development began on HTML5 in the Web Hypertext Application Technology
-Working Group (WHATWG), which became a joint deliverable with the W3C in
-2008.
+Working Group (WHATWG), which became a joint deliverable with the W3C in 2008.
+

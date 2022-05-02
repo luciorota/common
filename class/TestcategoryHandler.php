@@ -14,7 +14,7 @@ use Xmf\{
 //defined('XOOPS_ROOT_PATH') || die('XOOPS root path not defined');
 include_once \dirname(__DIR__) . '/include/common.php';
 
-class TestcategoryHandler extends \CommonObjectHandler {
+class TestcategoryHandler extends CommonObjectHandler {
 
     /**
      * @var moduleHelper, sessionHelper, passds_id
@@ -48,12 +48,11 @@ class TestcategoryHandler extends \CommonObjectHandler {
     /**
      * get a array of categorys objects|arrays as an ordered list
      *
-     * @param  CriteriaElement|CriteriaCompo $tempCriteria  {@link CriteriaElement} to match
-     * @param  bool             $as_object  flag indicating as object, otherwise as array
-     * @param  bool             $id_as_key use the ID as key for the array
-     * @param  int              $category_id
-     * @param  int              $level
-
+     * @param \CriteriaElement|null $tempCriteria {@link CriteriaElement} to match
+     * @param bool                  $id_as_key    use the ID as key for the array
+     * @param bool                  $as_object    flag indicating as object, otherwise as array
+     * @param int                   $category_id
+     * @param int                   $level
      * @return array            associative array('id' =>, 'parentId' =>, 'level' =>,'element' =>) where element are objects/array {@link XoopsObject}
      */
     public function getObjectTreeToArray(\CriteriaElement $tempCriteria = null, $id_as_key = false, $as_object = true, $category_id = 0, $level = 0) {
@@ -106,12 +105,11 @@ class TestcategoryHandler extends \CommonObjectHandler {
     /**
      * get a hierarchy of categorys objects|arrays as an ordered list
      *
-     * @param  CriteriaElement|CriteriaCompo $criteria  {@link CriteriaElement} to match
-     * @param  bool            $as_object  flag indicating as object, otherwise as array
-     * @param  bool            $id_as_key use the ID as key for the array
-     * @param  int             $category_id
-     * @param  int             $level
-
+     * @param \CriteriaElement|null $tempCriteria
+     * @param bool                  $id_as_key use the ID as key for the array
+     * @param bool                  $as_object flag indicating as object, otherwise as array
+     * @param int                   $category_id
+     * @param int                   $level
      * @return array           associative array('id' =>, 'parentId' =>, 'level' =>,'element' =>) where element are objects/array {@link XoopsObject}
      */
     public function getObjectTreeToHerarchy(\CriteriaElement $tempCriteria = null, $id_as_key = false, $as_object = true, $category_id = 0, $level = 0) {

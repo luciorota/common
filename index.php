@@ -1,5 +1,7 @@
 <?php
 
+use XoopsModules\Common\Breadcrumb;
+
 $currentFile = basename(__FILE__);
 include __DIR__ . '/header.php';
 
@@ -12,8 +14,8 @@ $xoTheme->addStylesheet(COMMON_CSS_URL . '/' . $currentFile . '.css'); // ie: in
 $xoTheme->addScript(COMMON_JS_URL . '/module.js');
 $xoTheme->addScript(COMMON_JS_URL . '/' . $currentFile . '.js'); // ie: index.php.js
 // template: common\breadcrumb
-xoops_load('breadcrumb', 'common');
-$breadcrumb = new common\breadcrumb();
+//xoops_load('breadcrumb', 'common');
+$breadcrumb = new Breadcrumb();
 $breadcrumb->addLink($commonHelper->getModule()->getVar('name'), COMMON_URL);
 $xoopsTpl->assign('commonBreadcrumb', $breadcrumb->render());
 

@@ -1,5 +1,12 @@
 <?php
 
+use Xmf\Request;
+use XoopsModules\Common\{
+    Breadcrumb,
+    FormAjaxImageManager,
+    ThemedForm
+};
+
 $currentFile = basename(__FILE__);
 include __DIR__ . '/header.php';
 
@@ -12,8 +19,8 @@ $xoTheme->addStylesheet(COMMON_CSS_URL . '/module.css');
 $xoTheme->addScript(COMMON_JS_URL . '/module.js');
 //$xoTheme->addScript(COMMON_JS_URL . '/' . $currentFile . '.js'); // ie: index.php.js
 // template: common\breadcrumb
-xoops_load('breadcrumb', 'common');
-$breadcrumb = new common\breadcrumb();
+//xoops_load('breadcrumb', 'common');
+$breadcrumb = new Breadcrumb();
 $breadcrumb->addLink($commonHelper->getModule()->getVar('name'), COMMON_URL);
 $xoopsTpl->assign('commonBreadcrumb', $breadcrumb->render());
 
@@ -24,8 +31,8 @@ xoops_load('XoopsUserUtility');
 
 
 
-xoops_load('XoopsRequest');
-$op = XoopsRequest::getCmd('op', '');
+//xoops_load('XoopsRequest');
+$op = Request::getCmd('op', '');
 switch ($op) {
     default:
         break;
@@ -39,8 +46,8 @@ switch ($op) {
 
 // template: form
 xoops_load('XoopsFormLoader');
-xoops_load('ThemedForm', 'common');
-$formObj = new common\ThemedForm('title', 'iscrittoForm', '', 'POST', true);
+//xoops_load('ThemedForm', 'common');
+$formObj = new ThemedForm('title', 'iscrittoForm', '', 'POST', true);
 $formObj->setExtra('enctype="multipart/form-data"');
 
 //xoops_load('FormGoogleMap', 'common');
@@ -52,8 +59,8 @@ $formObj->insertBreak();
 
 
 
-xoops_load('FormAjaxImageManager', 'common');
-$formObj->addElement(new common\FormAjaxImageManager('FormAjaxImageManager', 'FormAjaxImageManager', '', []));
+//xoops_load('FormAjaxImageManager', 'common');
+$formObj->addElement(new FormAjaxImageManager('FormAjaxImageManager', 'FormAjaxImageManager', '', []));
 
 
 

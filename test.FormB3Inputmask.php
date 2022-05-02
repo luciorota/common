@@ -1,5 +1,12 @@
 <?php
 
+use Xmf\Request;
+use XoopsModules\Common\{
+    Breadcrumb,
+    FormB3Inputmask,
+    ThemedForm
+};
+
 $currentFile = basename(__FILE__);
 include __DIR__ . '/header.php';
 
@@ -12,8 +19,8 @@ $xoTheme->addStylesheet(COMMON_CSS_URL . '/module.css');
 $xoTheme->addScript(COMMON_JS_URL . '/module.js');
 //$xoTheme->addScript(COMMON_JS_URL . '/' . $currentFile . '.js'); // ie: index.php.js
 // template: common\breadcrumb
-xoops_load('breadcrumb', 'common');
-$breadcrumb = new common\breadcrumb();
+//xoops_load('breadcrumb', 'common');
+$breadcrumb = new Breadcrumb();
 $breadcrumb->addLink($commonHelper->getModule()->getVar('name'), COMMON_URL);
 $xoopsTpl->assign('commonBreadcrumb', $breadcrumb->render());
 
@@ -24,8 +31,8 @@ xoops_load('XoopsUserUtility');
 
 
 
-xoops_load('XoopsRequest');
-$op = XoopsRequest::getCmd('op', '');
+//xoops_load('XoopsRequest');
+$op = Request::getCmd('op', '');
 switch ($op) {
     default:
         break;
@@ -39,15 +46,15 @@ switch ($op) {
 
 // template: form
 xoops_load('XoopsFormLoader');
-xoops_load('ThemedForm', 'common');
-$formObj = new common\ThemedForm('title', 'iscrittoForm', '', 'POST', true);
+//xoops_load('ThemedForm', 'common');
+$formObj = new ThemedForm('title', 'iscrittoForm', '', 'POST', true);
 $formObj->setExtra('enctype="multipart/form-data"');
 
 
 
-xoops_load('FormB3Inputmask', 'common');
+//xoops_load('FormB3Inputmask', 'common');
 $inputmask = '(999) 999-9999';
-$FormB3Inputmask = new common\FormB3Inputmask('FormB3Inputmask1', 'FormB3Inputmask1', '', $inputmask, null, 'tel.', '', 'telephone number');
+$FormB3Inputmask = new FormB3Inputmask('FormB3Inputmask1', 'FormB3Inputmask1', '', $inputmask, null, 'tel.', '', 'telephone number');
 $FormB3Inputmask->setDescription("<a href='https://github.com/RobinHerbots/Inputmask'>https://github.com/RobinHerbots/Inputmask</a><br>inputmask = '{$inputmask}'");
 $formObj->addElement($FormB3Inputmask);
 
@@ -55,7 +62,7 @@ $options = [
     'alias' => 'datetime',
     'inputFormat' => 'dd/mm/yyyy'
 ];
-$FormB3Inputmask = new common\FormB3Inputmask('FormB3Inputmask2', 'FormB3Inputmask2', '', null, $options);
+$FormB3Inputmask = new FormB3Inputmask('FormB3Inputmask2', 'FormB3Inputmask2', '', null, $options);
 $FormB3Inputmask->setAttributes(['placeholder' => 'input date in dd/mm/yyyy format']);
 $FormB3Inputmask->setDescription('Date');
 $formObj->addElement($FormB3Inputmask);
@@ -63,7 +70,7 @@ $formObj->addElement($FormB3Inputmask);
 $options = [
     'alias' => 'email',
 ];
-$FormB3Inputmask = new common\FormB3Inputmask('FormB3Inputmask3', 'FormB3Inputmask3', '', null, $options, '@', '', 'email');
+$FormB3Inputmask = new FormB3Inputmask('FormB3Inputmask3', 'FormB3Inputmask3', '', null, $options, '@', '', 'email');
 $FormB3Inputmask->setDescription('Email');
 $formObj->addElement($FormB3Inputmask);
 
@@ -71,14 +78,14 @@ $options = [
     'mask' => '999.999.999.999',
     'placeholder' => '___.___.___.___',
 ];
-$FormB3Inputmask = new common\FormB3Inputmask('FormB3Inputmask4', 'FormB3Inputmask4', '', null, $options, 'pre IP', ' post /', 'IP address');
-$FormB3Inputmask->setDescription("IP Address<br>new common\FormB3Inputmask('FormB3Inputmask4', 'FormB3Inputmask4', '', null, \$options, 'pre IP', 'post /', 'IP address')");
+$FormB3Inputmask = new FormB3Inputmask('FormB3Inputmask4', 'FormB3Inputmask4', '', null, $options, 'pre IP', ' post /', 'IP address');
+$FormB3Inputmask->setDescription("IP Address<br>new FormB3Inputmask('FormB3Inputmask4', 'FormB3Inputmask4', '', null, \$options, 'pre IP', 'post /', 'IP address')");
 $formObj->addElement($FormB3Inputmask);
 
 $options = [
     'alias' => 'mac',
 ];
-$FormB3Inputmask = new common\FormB3Inputmask('FormB3Inputmask5', 'FormB3Inputmask5', '', null, $options);
+$FormB3Inputmask = new FormB3Inputmask('FormB3Inputmask5', 'FormB3Inputmask5', '', null, $options);
 $FormB3Inputmask->setDescription('Mac address');
 $formObj->addElement($FormB3Inputmask);
 
